@@ -14,23 +14,6 @@ function randomGuests(min, max){
 
 }
 
-//calculate the number of cookies sold at each store with the randomGuests variable and the avg of each city
-// stores the TOTAL amount of cookies sold for each hour AND sums the grand total
-function storeData (store){
-  var cookiesBoughtArr = [];
-  var sumCookiesBoughtArr = 0;
-  for (i=0; i<hours.length; i++){
-    var intermediateCalc = randomGuests(store.min, store.max);
-    var xyz = Math.floor(intermediateCalc * store.avg);
-    console.log(hours[i], ' o\'clock: ', xyz, ' cookies sold' );
-    cookiesBoughtArr.push(xyz);
-    sumCookiesBoughtArr = xyz + sumCookiesBoughtArr;
-  }
-  return {
-    byHour: cookiesBoughtArr,
-    sumCookiesBoughtArr,
-  }
-}
 
 // objects, that is `places`, with their associated data
 // name, min, max, avg are all provided
@@ -47,7 +30,7 @@ var seattle = {
       sumCookiesBoughtArr: 0,
     },
     render: function () {
-      varlistEl = document.getElementById('places');
+      var listEl = document.getElementById('places');
       var heading = document.createElement('h2');
       heading.textContent = this.name;
       listEl.appendchild('heading');
@@ -70,7 +53,7 @@ var tokyo = {
       sumCookiesBoughtArr: 0,
     },
     render: function () {
-      varlistEl = document.getElementById('places');
+      var listEl = document.getElementById('places');
       var heading = document.createElement('h2');
       heading.textContent = this.name;
       listEl.appendchild('heading');
@@ -93,7 +76,7 @@ var dubai = {
       sumCookiesBoughtArr: 0,
     },
     render: function () {
-      varlistEl = document.getElementById('places');
+      var listEl = document.getElementById('places');
       var heading = document.createElement('h2');
       heading.textContent = this.name;
       listEl.appendchild('heading');
@@ -116,7 +99,7 @@ var paris = {
       sumCookiesBoughtArr: 0,
     },
     render: function () {
-      varlistEl = document.getElementById('places');
+      var listEl = document.getElementById('places');
       var heading = document.createElement('h2');
       heading.textContent = this.name;
       listEl.appendchild('heading');
@@ -139,7 +122,7 @@ var lima = {
       sumCookiesBoughtArr: 0,
     },
     render: function () {
-      varlistEl = document.getElementById('places');
+      var listEl = document.getElementById('places');
       var heading = document.createElement('h2');
       heading.textContent = this.name;
       listEl.appendchild('heading');
@@ -151,5 +134,31 @@ var lima = {
     }
 }
 
+//calculate the number of cookies sold at each store with the randomGuests variable and the avg of each city
+// stores the TOTAL amount of cookies sold for each hour AND sums the grand total
+function storeData (store){
+  var cookiesBoughtArr = [];
+  var sumCookiesBoughtArr = 0;
+  for (var i=0; i<hours.length; i++){
+    var intermediateCalc = randomGuests(store.min, store.max);
+    var xyz = Math.floor(intermediateCalc * store.avg);
+    console.log(hours[i], ': ', xyz, ' cookies sold' );
+    cookiesBoughtArr.push(xyz);
+    sumCookiesBoughtArr = xyz + sumCookiesBoughtArr;
+  }
+  return {
+    byHour: cookiesBoughtArr,
+    sumCookiesBoughtArr,
+  }
+}
+
 seattle.cookiesBoughtArr = storeData(seattle);
 seattle.render;
+paris.cookiesBoughtArr = storeData(paris);
+paris.render;
+lima.cookiesBoughtArr = storeData(lima);
+lima.render;
+tokyo.cookiesBoughtArr = storeData(tokyo);
+tokyo.render;
+dubai.cookiesBoughtArr = storeData(dubai);
+dubai.render;
