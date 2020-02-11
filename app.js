@@ -2,16 +2,33 @@
 // var hours is an array of the hours that the store is open
 // var places is an array of the objects
 // var shopData is a function (not a method, because it is not in an object) that eventually should cycle through each hour and generate a number of cookies sold at each location at each hour BUT I HAVE NO IDEA WHAT I'M DOING PLEASE HELP
-var hours = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 var places = [seattle, tokyo, dubai, paris, lima];
-var shopData = function(){
-  // for will loop through each hour and create data for each hour at each place
-  for (var cyclePlaces=0; storeLocation <places.length; storeLocation ++){
-    
 
+//calculates a random number between the min and max for the respective city
+function randomGuests(min, max){
+  min = Math.ceil(min);
+  max= Math.floor(max);
 
+  return Math.floor(Math.random() * (max - min) + min);
 
+}
 
+//calculate the number of cookies sold at each store with the randomGuests variable and the avg of each city
+// stores the TOTAL amount of cookies sold for each hour AND sums the grand total
+function storeData (store){
+  var cookiesBoughtArr = [];
+  var sumCookiesBoughtArr = 0;
+  for (i=0; i<hours.length; i++){
+    var intermediateCalc = randomGuests(store.min, store.max);
+    var xyz = Math.floor(intermediateCalc * store.avg);
+    console.log(hours[i], ' o\'clock: ', xyz, ' cookies sold' );
+    cookiesBoughtArr.push(xyz);
+    sumCookiesBoughtArr = xyz + sumCookiesBoughtArr;
+  }
+  return {
+    byHour: cookiesBoughtArr,
+    sumCookiesBoughtArr,
   }
 }
 
@@ -25,22 +42,20 @@ var seattle = {
     min: 23,
     max: 65,
     avg: 6.3,
-    storage: [seattle.cookiesBought],
-    randomGuests: function(max,min){
-      randomNumber = Math.floor(Math.random() * (this.max - this.min) + this.min);
-      return randomNumber;
-      
+    cookiesBoughtArrCombo: {
+      byHour: [],
+      sumCookiesBoughtArr: 0,
     },
-    cookiesBought: function (randomGuests, avg){
-      var cookiesHour = Math.floor(this.randomGuests() * this.avg);
-      storage = cookiesBought.push(cookiesHour);
-      return cookiesHour;
-      
-      
-    },
-    shopData: function (){
-      for (var places=0; places <places.length; places ++);
-      return (seattle.cookiesHour)
+    render: function () {
+      varlistEl = document.getElementById('places');
+      var heading = document.createElement('h2');
+      heading.textContent = this.name;
+      listEl.appendchild('heading');
+      for (var i=0; i < this.cookiesBoughtArr.byHour.length; i++) {
+        var itemEl = document.createElement('li');
+        itemEl.textContent = hours[i] + ' ' + this.cookiesBoughtArr.byHour[i];
+        listEl.appendchild(itemEl);
+      }
     }
 }
  
@@ -50,14 +65,20 @@ var tokyo = {
     min: 3,
     max: 24,
     avg: 1.2,
-    storage: [this.cookiesBought],
-    randomGuests: function(max,min){
-      randomNumber = Math.floor(Math.random() * (this.max - this.min) + this.min);
-      return randomNumber;
+    cookiesBoughtArrCombo: {
+      byHour: [],
+      sumCookiesBoughtArr: 0,
     },
-    cookiesBought: function (randomGuests, avg){
-      var cookiesHour = Math.floor(this.randomGuests() * this.avg);
-      return cookiesHour;
+    render: function () {
+      varlistEl = document.getElementById('places');
+      var heading = document.createElement('h2');
+      heading.textContent = this.name;
+      listEl.appendchild('heading');
+      for (var i=0; i < this.cookiesBoughtArr.byHour.length; i++) {
+        var itemEl = document.createElement('li');
+        itemEl.textContent = hours[i] + ' ' + this.cookiesBoughtArr.byHour[i];
+        listEl.appendchild(itemEl);
+      }
     }
   }
 
@@ -66,15 +87,21 @@ var dubai = {
     name: 'Dubai',
     min: 11,
     max: 38,
-    avgCookieSale: 3.7,
-    storage: [this.cookiesBought],
-    randomGuests: function(max,min){
-      randomNumber = Math.floor(Math.random() * (this.max - this.min) + this.min);
-      return randomNumber;
+    avg: 3.7,
+    cookiesBoughtArrCombo: {
+      byHour: [],
+      sumCookiesBoughtArr: 0,
     },
-    cookiesBought: function (randomGuests, avg){
-      var cookiesHour = Math.floor(this.randomGuests() * this.avg);
-      return cookiesHour;
+    render: function () {
+      varlistEl = document.getElementById('places');
+      var heading = document.createElement('h2');
+      heading.textContent = this.name;
+      listEl.appendchild('heading');
+      for (var i=0; i < this.cookiesBoughtArr.byHour.length; i++) {
+        var itemEl = document.createElement('li');
+        itemEl.textContent = hours[i] + ' ' + this.cookiesBoughtArr.byHour[i];
+        listEl.appendchild(itemEl);
+      }
     }
   }
   
@@ -84,14 +111,20 @@ var paris = {
     min: 30,
     max: 28,
     avg: 2.3, 
-    storage: [this.cookiesBought],
-    randomGuests: function(max,min){
-      randomNumber = Math.floor(Math.random() * (this.max - this.min) + this.min);
-      return randomNumber;
+    cookiesBoughtArrCombo: {
+      byHour: [],
+      sumCookiesBoughtArr: 0,
     },
-    cookiesBought: function (randomGuests, avg){
-      var cookiesHour = Math.floor(this.randomGuests() * this.avg);
-      return cookiesHour;
+    render: function () {
+      varlistEl = document.getElementById('places');
+      var heading = document.createElement('h2');
+      heading.textContent = this.name;
+      listEl.appendchild('heading');
+      for (var i=0; i < this.cookiesBoughtArr.byHour.length; i++) {
+        var itemEl = document.createElement('li');
+        itemEl.textContent = hours[i] + ' ' + this.cookiesBoughtArr.byHour[i];
+        listEl.appendchild(itemEl);
+      }
     }
   }
 
@@ -101,13 +134,22 @@ var lima = {
     min: 2,
     max: 16,
     avg: 4.6,
-    storage: [this.cookiesBought],
-    randomGuests: function(max,min){
-      randomNumber = Math.floor(Math.random() * (this.max - this.min) + this.min);
-      return randomNumber;
+    cookiesBoughtArrCombo: {
+      byHour: [],
+      sumCookiesBoughtArr: 0,
     },
-    cookiesBought: function (randomGuests, avg){
-      var cookiesHour = Math.floor(this.randomGuests() * this.avg);
-      return cookiesHour;
+    render: function () {
+      varlistEl = document.getElementById('places');
+      var heading = document.createElement('h2');
+      heading.textContent = this.name;
+      listEl.appendchild('heading');
+      for (var i=0; i < this.cookiesBoughtArr.byHour.length; i++) {
+        var itemEl = document.createElement('li');
+        itemEl.textContent = hours[i] + ' ' + this.cookiesBoughtArr.byHour[i];
+        listEl.appendchild(itemEl);
+      }
     }
-  }
+}
+
+seattle.cookiesBoughtArr = storeData(seattle);
+seattle.render;
