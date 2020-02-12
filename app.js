@@ -1,8 +1,14 @@
 'use strict'
 // var hours is an array of the hours that the store is open
 // var places is an array of the objects
+// arr that tallies TOTAL cookies bought
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 var places = [seattle, tokyo, dubai, paris, lima];
+// var jkl = []; // total cookies bought
+
+// not sure what to do with this
+// Store.prototype.hoursOpen = hours.length;
+// Store.prototype.sumCookiesBoughtArr = 0;
 
 //calculates a random number between the min and max for the respective city
 function randomGuests(min, max){
@@ -11,7 +17,7 @@ function randomGuests(min, max){
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-//calculates average cookies sold per hour AND sums the hourly totals into a grand total
+//calculates average cookies sold per hour 
 function storeData (store){
   var cookiesBoughtArr = [];
   var sumCookiesBoughtArr = 0;
@@ -23,10 +29,22 @@ function storeData (store){
     sumCookiesBoughtArr = xyz + sumCookiesBoughtArr;
   }
   return {
-    byHour: cookiesBoughtArr,
-    sumCookiesBoughtArr,
+    byHour: cookiesBoughtArr, // total cookies by hour
+    sumCookiesBoughtArr, // grand total cookies bought
   }
 }
+
+// //adds up all the cookies sold per hour to a grand total
+// function total(cookiesBoughtArr){
+//   var i = 0;
+//   var ttl = 0;
+//   while (i< cookiesBoughtArr.length){
+//     ttl = ttl + cookiesBoughtArr[i];
+//     i++
+//   }
+//   return(ttl);
+// }
+
 
 // renders unorder list onto web page
 function render(){
@@ -44,7 +62,24 @@ function render(){
 
 // renders table onto web page
 
+// var masterEl = document.GetElementbyId('mesas');
+// var masterHead = document.createElement('th');
+// masterHead.textContent = name
+// masterEl.appendChild(masterHead);
+
 function renderTable(){
+
+  var masterEl = document.GetElementbyId('mesas');
+  var masterHead = document.createElement('tr');
+  masterHead.textContent = this.name;
+  masterEl.appendChild(masterHead);
+
+  for (var i=0; i < this.cookiesBoughtArr.byHour.length; i++) {
+    var headEl = document.createElement('th');
+    headEl.textContent = hours[i] + ' ' + this.cookiesBoughtArr.byHour[i];
+    masterEl.appendChild(headEl);
+  }
+
   var tableEl = document.getElementById('mesas');
   var martio = document.createElement('tr');
   martio.textContent = this.name;
@@ -98,7 +133,8 @@ var dubai = new CookieStand('Dubai', 11, 38, 3.7)
 var paris = new CookieStand('Paris', 30, 28, 2.3)
 var lima = new CookieStand('Lima', 2, 16, 4.6)
 
-//actually renders information onto web page
+
+// renders information onto web page
 seattle.cookiesBoughtArr = storeData(seattle);
 seattle.renderTable();
 paris.cookiesBoughtArr = storeData(paris);
