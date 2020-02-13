@@ -89,6 +89,7 @@ function renderHours (clock){
   clockData.textContent = clock.clockData;
   clock.appendChild(clockData)
   for (var i=0; i < CookieStand.prototype.hours.length; i++){
+    
     var pleaseWork = document.createElement('td');
     pleaseWork.textContent = clock.CookieStand.prototype.hours[i];
     clock.appendChild(pleaseWork);
