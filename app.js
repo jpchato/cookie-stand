@@ -11,10 +11,17 @@ function CookieStand(name, min, max, avg) {
   totalStores.push(this);
 }
 
+// calls html table so we can attach to it
 var table = document.getElementById('mesas');
 var totalStores = [];
 
+//array of hours
 CookieStand.prototype.hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+
+// function that generates a random number of customers. used with avg to generate avg cookies sold
+function randomNumberOfCustomers(min, max){
+  return Math.floor(Math.random() * (max-min) + min);
+}
 
 //Getting cookies per hour
 CookieStand.prototype.generateCookiesPerHour = function () {
@@ -30,6 +37,7 @@ CookieStand.prototype.generateDailyTotals = function () {
   }
 }
 
+// cities and assocaited data created using CookieStand object function
 var seattle = new CookieStand('Seattle', 23, 65, 6.3);
 seattle.generateCookiesPerHour();
 seattle.generateDailyTotals();
@@ -51,9 +59,6 @@ lima.generateCookiesPerHour();
 lima.generateDailyTotals();
 render(lima);
 
-function randomNumberOfCustomers(min, max){
-  return Math.floor(Math.random() * (max-min) + min);
-}
 
 // to render a single row of data for a store
 function render (store) {
@@ -77,19 +82,19 @@ row.appendChild(total);
 table.appendChild(row);
 }
 
-// //Create a header row with the hours
-// function renderHours (clock){
-//   var clock = document.createElement ('tr');
-//   var clockData = document.createElement ('td');
-//   clockData.textContent = clock.clockData;
-//   clock.appendChild(clockData)
-//   for (var i=0; i < hours.length; i++){
-//     var pleaseWork = document.createElement('td');
-//     pleaseWork.textContent = clock.CookieStand.hours[i];
-//     clock.appendChild(pleaseWork);
-//   }
-//   table.appendChild(clock);
+//Create a header row with the hours IT DOESN'T WORK
+function renderHours (clock){
+  var clock = document.createElement ('tr');
+  var clockData = document.createElement ('td');
+  clockData.textContent = clock.clockData;
+  clock.appendChild(clockData)
+  for (var i=0; i < CookieStand.prototype.hours.length; i++){
+    var pleaseWork = document.createElement('td');
+    pleaseWork.textContent = clock.CookieStand.prototype.hours[i];
+    clock.appendChild(pleaseWork);
+  }
+  table.appendChild(clock);
 
-// }
-// console.log(renderHours(CookieStand.prototype.hours));
-// renderHours(CookieStand.prototype.hours);
+}
+console.log(renderHours(CookieStand.prototype.hours));
+renderHours(CookieStand.prototype.hours);
