@@ -18,6 +18,7 @@ var totalStores = [];
 //array of hours
 CookieStand.prototype.hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
+
 // function that generates a random number of customers. used with avg to generate avg cookies sold
 function randomNumberOfCustomers(min, max){
   return Math.floor(Math.random() * (max-min) + min);
@@ -82,20 +83,29 @@ row.appendChild(total);
 table.appendChild(row);
 }
 
-//Create a header row with the hours IT DOESN'T WORK
-function renderHours (clock){
-  var clock = document.createElement ('tr');
-  var clockData = document.createElement ('td');
-  clockData.textContent = clock.clockData;
-  clock.appendChild(clockData)
-  for (var i=0; i < CookieStand.prototype.hours.length; i++){
-    
-    var pleaseWork = document.createElement('td');
-    pleaseWork.textContent = clock.CookieStand.prototype.hours[i];
-    clock.appendChild(pleaseWork);
-  }
-  table.appendChild(clock);
 
+//Form Handling Code
+function handleForm(event){
+  event.preventDefault();
+
+  var name = event.target.name.value;
+  var minCust = event.target.minCust.value;
+  var maxCust = event.target.maxCust.value;
+  var avgCookiePerCust = event.taget.avgCookiePerCust.value;
+  var store = new CookieStand (name, minCust, maxCust, avgCookiePerCust);
+  console.log(store);
 }
-console.log(renderHours(CookieStand.prototype.hours));
-renderHours(CookieStand.prototype.hours);
+
+
+var totalSalesbyHour = [];
+function totalHourlySales () {
+  var hourlyTotal = 0;
+  var grandTotal = 0;
+  for (i=0; i < CookieStand.prototype.hours.length; i ++){
+    for (j=0; j < totalStores.length; j ++){
+      hourlyTotal += totalStores[j].cookiesByHour[i];
+  }
+  // return grandTotal
+  console.log(totalHourlySales);
+
+}}

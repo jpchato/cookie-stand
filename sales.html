@@ -3,14 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="salesstyle.css">
   <title>Document</title>
 </head>
-<body >
+<body>
+  <header><h1>Sales Data</h1></header>
+  <a href="http://index.html">Homepage</a>
   <table>
     <tbody id='mesas'>
 
     </tbody>
   </table>
+  <form id = "form">
+    <fieldset>
+      <legend>Tell me about your store!</legend>
+      <label>Store name</label>
+      <input type="name" type="text"><br>
+      <label>Minimum Custormer</label>
+      <input type="minCust" type="number"><br>
+      <label>Maximum Customers</label>
+      <input type="maxCust" type="number"><br>
+      <label>Average Cookies Sold Per Customer</label>
+      <input type="avgCookiesPerCust" type="number"><br>
+      <button type="submit">Submit</button>
+    </fieldset>
+  </form>
   <ul id="locations"></ul>
   <script src="app.js"></script>
   
