@@ -1,5 +1,6 @@
 body {
   background-color: #728479;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 body header h1 {
@@ -9,6 +10,7 @@ body header h1 {
   margin-left: 450px;
   margin-right: 450px;
   border-radius: 100px;
+  
 }
 
 nav ul li {
@@ -105,7 +107,6 @@ main p {
   font-size: large;
 }
 
-legend {
-  color: azure;
+mark {
+  font-family: 'Ubuntu', sans-serif;
 }
-
